@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React, { useState } from 'react';
+import {AddCategory} from './components/AddCategory';
+import {GiftGrid} from './components/GiftGrid';
+
 
 function App() {
+
+  //const categories = ['one punch', 'dragonball','hunterx'];
+
+  const [categories, setCategories] = useState(['one punch'])
+  // const handleAdd = () =>{
+  //     setCategories((cats) =>[...cats,'samurai x']);
+  // }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>GifExpertApp</h1>
+      <AddCategory setCategories = {setCategories}/>
+      <hr />
+      <ol>
+        {
+          categories.map((category) => (
+            <GiftGrid 
+              key={category}
+              category={category}/>
+          ))
+
+        }
+      </ol>
+
+
+    </>
   );
 }
 
